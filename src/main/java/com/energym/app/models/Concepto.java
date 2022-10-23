@@ -16,5 +16,20 @@ public class Concepto {
 	@Column(name="nombre_concepto")
 	private String nombreConcepto;
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNombreConcepto() {
+		return nombreConcepto;
+	}
+
+	public void setNombreConcepto(String nombreConcepto) {
+		this.nombreConcepto = nombreConcepto;
+	}
 	
 }
