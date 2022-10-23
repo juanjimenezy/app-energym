@@ -1,6 +1,7 @@
 package com.energym.app.models;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name="usuarios")
@@ -31,6 +36,11 @@ public class Usuario implements Serializable{
 	
 	@Column(name="celular")
 	private String celular;
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+	@Column(name="fecha_creacion")
+	@Temporal(TemporalType.DATE)
+	private Date fechaCreacion;
 
 	public Long getId() {
 		return id;
@@ -72,6 +82,16 @@ public class Usuario implements Serializable{
 		this.celular = celular;
 	}
 	
+	public Date getFechaCreacion() {
+		return fechaCreacion;
+	}
+
+	public void setFechaCreacion(Date fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
+
+
+
 
 	private static final long serialVersionUID = 1L;
 }

@@ -13,5 +13,7 @@ public interface IUsuarioService {
 	public Usuario findByCedula(Long cedula);
 	
 	public Usuario findByNombre(String nombre);
+	
+	public Usuario save(Usuario usuario);
 
 }
