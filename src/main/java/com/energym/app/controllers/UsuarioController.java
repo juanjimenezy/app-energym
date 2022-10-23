@@ -1,7 +1,9 @@
 package com.energym.app.controllers;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,13 +23,15 @@ public class UsuarioController {
 	private IUsuarioService usuarioService;
 	
 	@GetMapping("/usuarios")
-	public ResponseEntity<List<Usuario>> usuarios(){
+	public ResponseEntity<?> usuarios(){
 		List<Usuario> usuarios = new ArrayList<Usuario>();
+		Map<String, Object> response = new HashMap<>();
 		
 		try {
 			usuarios = usuarioService.findAll();
 		} catch (Exception e) {
-			// TODO: handle exception
+			response.put("mensaje", "No existen clientes");
+			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.NOT_FOUND);
 		}
 		
 		return new ResponseEntity<List<Usuario>>(usuarios,HttpStatus.OK);
