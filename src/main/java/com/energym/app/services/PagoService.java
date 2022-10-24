@@ -23,7 +23,10 @@ public class PagoService implements IPagoService{
 	public Pago findById(Long id) {
 		return pagoRepository.findById(id).orElse(null);
 	}
-	
-	
 
+	@Override
+	public Pago save(Pago pago) {
+		return pagoRepository.save(pago);
+	}
+	
 }
